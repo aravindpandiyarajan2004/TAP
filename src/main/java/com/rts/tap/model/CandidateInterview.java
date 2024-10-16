@@ -1,4 +1,6 @@
-package com.tap.candidate.model;
+package com.rts.tap.model;
+
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,30 +12,32 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Entity
-@Table(name = "candidateDetails_tbl")
+@Table(name = "candidateInterview_tbl")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CandidateDetails {
+public class CandidateInterview {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int candidateDetailsId;
+	private int candidateInterviewId;
 	
 	@Column
-	private String candidateYearsOfExperience;
+	private int jobId; //it will be get it from account manager module
 	
 	@Column
-	private String candidateCurrentCTC;
+	private Date interviewScheduledDate;
 	
 	@Column
-	private String candidateExpectedCTC;
+	private int interviewId; // this interview id will be get it from Hiring executive module [interviewer]
 	
 	@Column
-	private String candidateNoticePeriod;
+	private int candidateInterviewDuration;
 	
 	@Column
-	private String candidateProgrammingLanguageProficiency;
+	private String candidateInterviewStatus;
 
 }
+

@@ -1,12 +1,14 @@
-package com.tap.candidate.model;
+package com.rts.tap.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -39,7 +41,7 @@ public class Candidate {
 	private String candidateDateOfBirth;
 
 	@Column
-	private String candidateString;
+	private String candidateGender;
 
 	@OneToOne
 	private CandidateAddress candidateAddress;
@@ -50,11 +52,23 @@ public class Candidate {
 	@OneToOne
 	private CandidateDetails candidateDetails;
 
-	@OneToMany
+	@OneToMany(targetEntity = CandidateEducation.class, cascade = CascadeType.ALL)
+	@JoinColumn()
 	private List<CandidateEducation> candidateEducation;
 
 	@OneToOne
 	private CandidateAdditionals candidateAdditionals;
+	
+	@OneToMany(targetEntity = CandidateJobAppliedStatus.class, cascade = CascadeType.ALL)
+	@JoinColumn()
+	private List<CandidateJobAppliedStatus> candidateJobAppliedStatus;
+	
+	@OneToOne
+	private CandidateAssessment candidateAssessment;
+	
+	@OneToOne
+	private CandidateInterview candidateInterview;
+	
 
 	@Lob
 	@Column(columnDefinition = "LONGBLOB")

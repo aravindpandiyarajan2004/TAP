@@ -1,4 +1,6 @@
-package com.tap.candidate.model;
+package com.rts.tap.model;
+
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,23 +13,29 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "candidateAdditionals_tbl")
+@Table(name = "candidateJobAppliedStatus_tbl")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CandidateAdditionals {
-
+public class CandidateJobAppliedStatus {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int candidateAdditionalsId;
-
+	private int candidateJobAppliedStatusId;
+	
+	private int jobId; // it will be mapped from account manager module
+	
 	@Column
-	private String candidateLanguagesKnown;
-
+	private Date candidateApplicationDate;
+	
 	@Column
-	private String candidateNationality;
-
+	private String candidateJobStatus;
+	
 	@Column
-	private String candidateSkills;
+	private String jobNotes;
+	
+	@Column
+	private String jobLastUpdatedTime;
+	
 
 }
